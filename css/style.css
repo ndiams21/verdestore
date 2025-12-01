@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: #4a2c2a;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(255, 0, 76, 0.4);
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #ff4b6e;
+}
+
+.description {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.9;
+    color: #fff5f7;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding: 35px 0 1px 0px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: linear-gradient(to bottom, #ff4b6e, #ff9a9e);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 10px;
+}
+
+.year-section {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.year-label {
+    background-color: #ff4b6e;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 auto 20px;
+    width: fit-content;
+    box-shadow: 0 4px 12px rgba(255, 75, 110, 0.3);
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* Timeline items */
+.timeline-item {
+    background: #fff0f3;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(255, 105, 135, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-item::after {
+    content: '❤';
+    font-size: 1.2rem;
+    color: #ff4b6e;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left::after {
+    right: -25px;
+}
+
+.right::after {
+    left: -25px;
+}
+
+.image-container {
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #ffb6c1;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 1s ease-in-out; /* smooth fade */
+    opacity: 1;
+    border-radius: 10px;
+}
+
+/* .image-container:hover img {
+    transform: scale(1.05);
+} */
+
+.image-placeholder {
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3rem;
+    padding: 10px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-content {
+    padding: 10px;
+}
+
+.timeline-content h3 {
+    margin-bottom: 10px;
+    color: #ff4b6e;
+    font-size: 1.3rem;
+}
+
+.timeline-content p {
+    color: #4a2c2a;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #b56576;
+    margin-top: 10px;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    color: white;
+
+    margin-top: 40px;
+    opacity: 0.9;
+}
+
+.year-label.active {
+    background-color: #ff6f91;
+    transform: scale(1.05);
+}
+
+/* Collapse all timeline-items by default */
+.year-section .timeline-item {
+    display: none;
+}
+
+/* Expand only when year-section is active */
+.year-section.active .timeline-item {
+    display: block;
+}
+
+.image-placeholder button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #a6727ac4;
+  /* background-color: red; */
+  border: none;
+  color: #ff6d83;
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* border-radius: 66%; */
+  padding: 0px 4px 2px 4px;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+  opacity: 0;
+}
+
+.image-placeholder:hover button {
+  opacity: 1; /* appear on hover */
+}
+
+/* .image-placeholder button:hover {
+  background-color: rgba(255, 75, 110, 0.9);
+} */
+
+.image-placeholder .prev-btn {
+    opacity: 0;
+    left: 10px;
+}
+
+.image-placeholder .next-btn {
+    opacity: 0;
+    right: 10px;
+}
+
+.image-placeholder img.fade-out {
+  opacity: 0;
+}
+
+
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .year-label {
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item::after {
+      top: 15px;
+      left: 6px;
+        right: auto;
+    }
+    
+    .left, .right {
+        left: 0;
+    }
+}
